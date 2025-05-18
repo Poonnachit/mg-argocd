@@ -8,6 +8,14 @@ metadata:
 spec:
   description: team-a
 
+  destinations:
+  - namespace: develop
+    server: https://kubernetes.default.svc
+    name: in-cluster
+  - namespace: sut
+    server: https://kubernetes.default.svc
+    name: in-cluster
+
   sourceRepos:
     - "git@github.com:Poonnachit/mg-nod-prod-manifest.git"
 
