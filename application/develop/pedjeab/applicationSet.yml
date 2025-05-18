@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: develop-pedjeab-application-set
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - SVC_NAME: mg-cart
+  template:
+    metadata:
+      name: 'dev-{{SVC_NAME}}-guestbook'
+    spec:
+      # The project the application belongs to.
+      project: default
+
+      source:
+        source:
+        path: charts
+        repoURL: git@github.com:Poonnachit/mg-nod-prod-manifest.git
+        targetRevision: HEAD
+        helm:
+          releaseName: develop-{{SVC_NAME}}
+          valueFiles:
+            - ../develop/pedjeab/{{SVC_NAME}}/values.yml
+      
+      destination:
+        # cluster API URL
+        server: https://kubernetes.default.svc
+        # or cluster name
+        # name: in-cluster
+        # The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace
+        namespace: develop
+
+      syncPolicy:
+        automated:
+          prune: true 
+          selfHeal: true
