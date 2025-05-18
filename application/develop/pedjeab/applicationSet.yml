@@ -12,6 +12,8 @@ spec:
         PROJECT: team-a
       - SVC_NAME: mg-payment
         PROJECT: team-b
+      - SVC_NAME: mg-payment
+        PROJECT: team-ops
   template:
     metadata:
       name: 'dev-{{.SVC_NAME}}'
