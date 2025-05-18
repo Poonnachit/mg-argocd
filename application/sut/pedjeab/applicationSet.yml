@@ -9,12 +9,15 @@ spec:
   - list:
       elements:
       - SVC_NAME: mg-cart
+        PROJECT: team-a
+      - SVC_NAME: mg-payment
+        PROJECT: team-b
   template:
     metadata:
       name: 'sut-{{.SVC_NAME}}'
     spec:
       # The project the application belongs to.
-      project: default
+      project: '{{.PROJECT}}'
 
       source:
         source:

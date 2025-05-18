@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team-b
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: team-b
+
+  sourceRepos:
+    - "git@github.com:Poonnachit/mg-nod-prod-manifest.git"
+
+  roles:
+    - name: read-only
+      description: "Read-only privileges to develop"
+      policies:
+        - p, proj:team-b:read-only, applications, get, team-b/*, allow
+    
+    - name: read-write
+      policies:
+        - p, proj:team-b:read-write, application, get, team-b/*, allow
+        - p, proj:team-b:read-write, application, sync, team-b/*, allow
+        - p, proj:team-b:read-write, application, update, team-b/*, allow
+        - p, proj:team-b:read-write, application, delete, team-b/*, allow
+
+    

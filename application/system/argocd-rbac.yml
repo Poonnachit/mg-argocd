@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  policy.csv: |
+    g, nongkai, proj:default:read-write
+    p, proj:default:read-write, applications, get, default/*, allow
+
+    g, ant, proj:team-a:read-write
+    g, ant, proj:team-ops:read-only
+
+    g, bird, proj:team-b:read-write
+    g, bird, proj:team-a:read-only
+
+    p, owl, applications, *, */*, allow
+    p, owl, projects, *, */*, allow
