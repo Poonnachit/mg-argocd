@@ -12,7 +12,7 @@ spec:
         PROJECT: team-a
       - SVC_NAME: mg-payment
         PROJECT: team-b
-      - SVC_NAME: mg-payment
+      - SVC_NAME: mg-ops
         PROJECT: team-ops
   template:
     metadata:
