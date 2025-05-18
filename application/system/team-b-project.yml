@@ -21,7 +21,6 @@ spec:
 
   roles:
     - name: read-only
-      description: "Read-only privileges to develop"
       policies:
         - p, proj:team-b:read-only, applications, get, team-b/*, allow
     
