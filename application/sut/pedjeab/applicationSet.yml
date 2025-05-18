@@ -11,7 +11,7 @@ spec:
       - SVC_NAME: mg-cart
   template:
     metadata:
-      name: 'sut-{{SVC_NAME}}-guestbook'
+      name: 'sut-{{.SVC_NAME}}'
     spec:
       # The project the application belongs to.
       project: default
@@ -22,9 +22,9 @@ spec:
         repoURL: git@github.com:Poonnachit/mg-nod-prod-manifest.git
         targetRevision: HEAD
         helm:
-          releaseName: sut-{{SVC_NAME}}
+          releaseName: sut-{{.SVC_NAME}}
           valueFiles:
-            - ../sut/pedjeab/{{SVC_NAME}}/values.yml
+            - ../sut/pedjeab/{{.SVC_NAME}}/values.yml
       
       destination:
         # cluster API URL
