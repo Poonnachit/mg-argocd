@@ -26,8 +26,8 @@ spec:
     
     - name: read-write
       policies:
-        - p, proj:team-ops:read-write, application, get, team-ops/*, allow
-        - p, proj:team-ops:read-write, application, sync, team-ops/*, allow
-        - p, proj:team-ops:read-write, application, update, team-ops/*, allow
-        - p, proj:team-ops:read-write, application, update, team-ops/*, allow
+        - p, proj:team-ops:read-write, applications, get, team-ops/*, allow
+        - p, proj:team-ops:read-write, applications, sync, team-ops/*, allow
+        - p, proj:team-ops:read-write, applications, update, team-ops/*, allow
+        - p, proj:team-ops:read-write, applications, update, team-ops/*, allow
     
